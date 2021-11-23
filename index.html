@@ -2,23 +2,28 @@
 	<body>
 		<div id="root"></div>
 	</body>
-	<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-	<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+	<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 	<script type="text/babel">
-		const root = document.getElementById("root");
-    
+		
     function App() {
-      const [counter, setCounter] = React.useState(0);
-      const onClick = () => {
-        setCounter((current) => counter + 1);
-      };
-      return(<div>
-        <h3>Total click: {counter}</h3>
-        <button onClick={onClick}>Click me</button>
+      const [minutes, setMinutes] = React.useState();
+      const onChange = (event) => {
+        setMinutes(event.target.value);
+      }
+      return(
+      <div>
+        <h1>Super Converter</h1>
+        <label htmlFor="min">Minutes</label>
+        <input value={minutes} id="min" placeholder="Minutes" type="number" onChange={onChange} />
+        <h4>You want to convert {minutes}</h4>
+        <label htmlFor="hour">Hours</label>
+        <input id="hour" placeholder="Hours" type="number" />
       </div>
       );
     };
+    const root = document.getElementById("root");
 		ReactDOM.render(<App />, root);
 	</script>
 </html>

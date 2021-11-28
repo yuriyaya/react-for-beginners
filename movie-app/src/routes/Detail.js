@@ -17,15 +17,21 @@ function Detail() {
   }, []);
   return (
     <div>
-      <h1>{movieDetail.title}</h1>
-      <div>{movieDetail.rating}</div>
-      <img src={movieDetail.medium_cover_image} alt={movieDetail.title} />
-      <ul>
-        {movieDetail.genres.map((g) => (
-          <li key={g}>{g}</li>
-        ))}
-      </ul>
-      <p>{movieDetail.description_full}</p>
+      {loading ? (
+        <h3>movie detail loading...</h3>
+      ) : (
+        <div>
+          <h1>{movieDetail.title}</h1>
+          <div>{movieDetail.rating}</div>
+          <img src={movieDetail.medium_cover_image} alt={movieDetail.title} />
+          <ul>
+            {movieDetail.genres.map((g) => (
+              <li key={g}>{g}</li>
+            ))}
+          </ul>
+          <p>{movieDetail.description_full}</p>
+        </div>
+      )}
     </div>
   );
 }
